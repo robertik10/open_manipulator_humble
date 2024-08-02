@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- ros2_control macro for position controlled joints -->
+  <xacro:macro name="Ros2ControlPositionJoint" params="joint n">
+    <ros2_control name="control${n}" type="system">
+      <hardware>
+        <plugin>ign_ros2_control/IgnitionSystem</plugin>
+      </hardware>
+      <joint name="${joint}">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param> 
+        </state_interface>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param> 
+        </state_interface>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+
+  <!-- ros2_control macro for effort controlled joints -->
+  <xacro:macro name="Ros2ControlEffortJoint" params="joint n">
+    <ros2_control name="control${n}" type="system">
+      <hardware>
+        <plugin>ign_ros2_control/IgnitionSystem</plugin>
+      </hardware>
+      <joint name="${joint}">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param> 
+        </state_interface>
+        <state_interface name="velocity">
+                  <param name="initial_value">0.0</param> 
+        </state_interface>
+        <state_interface name="effort">
+                  <param name="initial_value">0.0</param> 
+        </state_interface>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+
+  <!-- ros2_control for joint1 -->
+  <xacro:Ros2ControlPositionJoint n="1" joint="joint1" />
+  
+
+  <!-- ros2_control for joint2 -->
+  <xacro:Ros2ControlPositionJoint n="2" joint="joint2" />
+  
+  <!-- ros2_control for joint3 -->
+  <xacro:Ros2ControlPositionJoint n="3" joint="joint3" />
+
+  <!-- ros2_control for joint4 -->
+  <xacro:Ros2ControlPositionJoint n="4" joint="joint4" />
+
+  <!-- ros2_control for gripper -->
+  <xacro:Ros2ControlEffortJoint n="5" joint="gripper" />
+
+  <!-- ros2_control for gripper_sub -->
+  <xacro:Ros2ControlEffortJoint n="6" joint="gripper_sub" />
+
+
+</robot>
+
+
+<!-- <?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"> -->
+
+  <!-- Transmission macro -->
+  <!-- <xacro:macro name="SimpleTransmissionPosition" params="joint n">
+    <transmission name="tran${n}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor${n}">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro> -->
+
+  <!-- Transmission macro -->
+  <!-- <xacro:macro name="SimpleTransmissionEffort" params="joint n">
+    <transmission name="tran${n}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor${n}">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro> -->
+
+  <!-- Transmission 1 -->
+  <!-- <xacro:SimpleTransmissionPosition n="1" joint="joint1" /> -->
+
+  <!-- Transmission 2 -->
+  <!-- <xacro:SimpleTransmissionPosition n="2" joint="joint2" /> -->
+
+  <!-- Transmission 3 -->
+  <!-- <xacro:SimpleTransmissionPosition n="3" joint="joint3" /> -->
+
+  <!-- Transmission 4 -->
+  <!-- <xacro:SimpleTransmissionPosition n="4" joint="joint4" /> -->
+
+  <!-- Transmission 5 -->
+  <!-- <xacro:SimpleTransmissionEffort n="5" joint="gripper" /> -->
+
+  <!-- Transmission 6 -->
+  <!-- <xacro:SimpleTransmissionEffort n="6" joint="gripper_sub" /> -->
+
+<!-- </robot> -->
+
