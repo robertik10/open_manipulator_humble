@@ -1,3 +1,5 @@
+# This file is used to generate the URDF file from the xacro file and launch the robot_state_publisher node
+# for the ros2controller package.
 import os
 import subprocess
 from launch import LaunchDescription
@@ -18,7 +20,7 @@ def generate_launch_description():
         raise RuntimeError(f"Command '{' '.join(command)}' failed with: {completed_process.stderr.decode()}")
 
     robot_description = completed_process.stdout
-    # print(robot_description.decode())
+
     return LaunchDescription([
         Node(
             package='robot_state_publisher',

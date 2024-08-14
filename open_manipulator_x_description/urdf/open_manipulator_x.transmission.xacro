@@ -42,7 +42,6 @@
 
   <!-- ros2_control for joint1 -->
   <xacro:Ros2ControlPositionJoint n="1" joint="joint1" />
-  
 
   <!-- ros2_control for joint2 -->
   <xacro:Ros2ControlPositionJoint n="2" joint="joint2" />
