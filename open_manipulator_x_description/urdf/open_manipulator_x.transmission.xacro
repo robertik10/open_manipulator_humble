@@ -40,6 +40,23 @@
     </ros2_control>
   </xacro:macro>
 
+  <!-- <xacro:macro name="Ros2ControlFixedJoint" params="joint n">
+    <ros2_control name="control${n}" type="system">
+      <hardware>
+        <plugin>ign_ros2_control/IgnitionSystem</plugin>
+      </hardware>
+      <joint name="${joint}">
+        <state_interface name="position">
+          <param name="initial_value">0.0</param> 
+        </state_interface>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param> 
+        </state_interface>
+      </joint>
+    </ros2_control>
+  </xacro:macro> -->
+
+
   <!-- ros2_control for joint1 -->
   <xacro:Ros2ControlPositionJoint n="1" joint="joint1" />
 
@@ -58,6 +75,8 @@
   <!-- ros2_control for gripper_sub -->
   <xacro:Ros2ControlEffortJoint n="6" joint="gripper_sub" />
 
+    <!-- ros2_control for end_effector_joint -->
+  <xacro:Ros2ControlPositionJoint n="7" joint="end_effector_joint"/>
 
 </robot>
 
